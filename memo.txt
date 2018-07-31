@@ -1,0 +1,26 @@
+npm install tedious --save(package.json log)
+npm install async
+
+mkdir webroot
+cd webroot
+npm install express --save
+npm install ejs --save
+npm install mongodb --save
+
+use dbname
+db.dropDatabase()
+
+show dbs
+show collections
+
+db.createCollection( 'colname' )
+db.colname.drop()
+
+db.colname.insert( { JSON } )
+db.colname.update( { search JSON }, { $set:{ update JSON } } )
+db.colname.update( { search JSON }, { $unset:{ money: '' } } )
+db.colname.update( { search JSON }, { $inc:{ money: 10 } } )
+
+db.colname.find()
+db.colname.find( { name:value } )
+

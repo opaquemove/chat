@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>chat macaws...</title>
+    <style>
+      body {
+        width:100%;height:100%;
+      }
+      .container {
+        z-index: 117;
+        width:100%;height:100%;text-align:center;
+        display:table;
+      }
+      .mainblock {
+        z-index: 117;
+        position:relative;
+        width:200px;
+        height:500px;
+        vertical-align:middle;display:table-cell;
+      }
+      .button1 {
+        position:relative;
+        background-color:#FFFFFF;
+        width:80px;
+        font-size:9px;
+        pading:2px;
+        border:1px solid #EDEDED;
+      }
+      #SLIDEPLUS {
+        z-index: 118;
+        position: absolute;
+        top:     20px;
+        left:    10px;
+        width:   24px;
+        height:  24px;
+        padding:  2px;
+        text-align: center;
+        color:      #AAAAAA;
+        border:  1px solid #EDEDED;
+      }
+      #SLIDEMINUS {
+        z-index: 118;
+        position: absolute;
+        top:     20px;
+        left:    41px;
+        width:   24px;
+        height:  24px;
+        padding:  2px;
+        text-align: center;
+        color:      #AAAAAA;
+        border:  1px solid #EDEDED;
+      }
+
+    </style>
+    <script src="util.js" ></script>
+    <script src="slide.js" ></script>
+    <script src="maya.js" ></script>
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src="index.js" ></script>
+  </head>
+  <body>
+    <div id='SLIDEPLUS'  >＋</div>
+    <div id='SLIDEMINUS' >ー</div>
+    <div class="container" >
+      <div class="mainblock"  >
+        <h1 style="color:#777777;" >Chat  macaws...</h1>
+        <form id='form' autocomplete="off" >
+          <input id='chat' style="width:170px;" />
+          <button>send</button>
+        </form>
+        <div style="text-align:left;" >
+          <div id="Opt" class="button1" style="" >Option...</div>
+          <div style="width:100%;height:190px;font-size:10px;overflow:scroll;" >
+            <ul id="messages"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
