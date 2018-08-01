@@ -2,7 +2,7 @@
   "name": "chat",
   "version": "1.0.0",
   "description": "",
-  "starts": {
+  "scripts": {
     "start": "node app.js"
   },
   "main": "app.js",
