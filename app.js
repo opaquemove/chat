@@ -1,5 +1,5 @@
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+var port      = process.env.OPENSHIFT_NODEJS_PORT;
 
 const http = require('http');
 const server = http.createServer( (req, res ) => {
