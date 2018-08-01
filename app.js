@@ -51,11 +51,13 @@ io.on( 'connection', ( socket ) => {
 });
 
 server.on( 'listening', () => {
-  console.log( 'listening on 3000' );
+  console.log( 'listening on ' + process.env.OPENSHIFT_NODEJS_PORT );
 });
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+//var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+//var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var port      = process.env.OPENSHIFT_NODEJS_PORT;
 // server.listen( 3000 );
 server.listen( port, ipaddress );
 
