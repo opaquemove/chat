@@ -10,6 +10,7 @@ const server = http.createServer( (req, res ) => {
 
 server.on( 'listening', () => {
   console.log( 'listening on ' + port );
+  console.log( '__dirname:' + __dirname );
 });
 
 server.listen( port, ipaddress );
