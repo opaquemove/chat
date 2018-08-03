@@ -20,7 +20,7 @@ io.on('connection', ( socket ) => {
         console.log( msg );
         break;
       case 'list':
-        macaw2.init('mongodb://macaws:macaws@macaws:27017/macaws','macaws','macaws', 'list',io);
+        macaw2.init('mongodb://macaws:macaws@172.30.222.124:27017/macaws','macaws','macaws', 'list',io);
         break;
       default:
         socket.broadcast.emit('chat', msg );
