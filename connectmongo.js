@@ -1,8 +1,8 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 
-MongoClient.connect('mongodb://127.0.0.1:27017', {useNewUrlParser:true}, ( err, client ) => {
-//MongoClient.connect('mongodb://macaws:macaws@macaws:27017', {useNewUrlParser:true}, ( err, client ) => {
+MongoClient.connect('mongodb://127.0.0.1:27017/macaws', {useNewUrlParser:true}, ( err, client ) => {
+//MongoClient.connect('mongodb://macaws:macaws@macaws:27017/macaws', {useNewUrlParser:true}, ( err, client ) => {
     console.log( "connected successfuly to server." );
   const db = client.db('macaws');
   var col = db.collection('macaws');

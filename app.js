@@ -41,6 +41,7 @@ const server = http.createServer( (req, res ) => {
 server.on( 'listening', () => {
   console.log( 'listening on ' + port );
   console.log( '__dirname:' + __dirname );
+  console.log( 'mongodb:' + process.env.MACAW_SERVICE_HOST + ':' + process.env.MACAW_SERVICE_PORT );
 });
 
 server.listen( port, ipaddress );
