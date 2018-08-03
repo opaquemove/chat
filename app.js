@@ -5,7 +5,10 @@ var express = require('express');
 var app     = express();
 var server  = require('http').Server(app);
 var io      = require('socket.io')(server);
-
+//var Macaw   = require('./macaw.js');
+//var macaw   = Macaw();
+var Macaw2  = require('./macaw2.js');
+var macaw2  = Macaw2();
 
 
 app.use('/', express.static( __dirname + '/public' ));
@@ -14,6 +17,10 @@ io.on('connection', ( socket ) => {
   socket.on('chat', (msg ) => {
     switch(msg){
       case 'sql':
+        console.log( msg );
+        break;
+      case 'list':
+        macaw2.init('mongodb://macaws:macaws@macaws:27017/macaws','macaws','macaws', 'list',socket);
         break;
       default:
         socket.broadcast.emit('chat', msg );
