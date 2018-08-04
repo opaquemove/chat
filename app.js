@@ -1,6 +1,4 @@
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-
+'use strict'
 var express = require('express');
 var app     = express();
 var server  = require('http').Server(app);
@@ -8,8 +6,12 @@ var io      = require('socket.io')(server);
 //var Macaw   = require('./macaw.js');
 //var macaw   = Macaw();
 var Macaw2  = require('./macaw2.js');
-var macaw2  = Macaw2();
+var macaw2  = new Macaw2();
 
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
+var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+//var mongourl  = "mongodb://macaws:macaws@172.30.222.124:27017/macaw";
+var mongourl  = "mongodb://localhost:27017";
 
 app.use('/', express.static( __dirname + '/public' ));
 
@@ -19,8 +21,13 @@ io.on('connection', ( socket ) => {
       case 'sql':
         console.log( msg );
         break;
+      case 'insert':
+        console.log( typeof( macaw2 ) );
+        macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
+        break;
       case 'list':
-        macaw2.init('mongodb://macaws:macaws@172.30.222.124:27017/macaws','macaws','macaws', 'list',io);
+        console.log( typeof( macaw2 ) );
+        macaw2.init(mongourl,'macaws','macaws', 'list',socket);
         break;
       default:
         socket.broadcast.emit('chat', msg );
