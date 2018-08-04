@@ -10,8 +10,8 @@ var macaw2  = new Macaw2();
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-//var mongourl  = "mongodb://macaws:macaws@172.30.222.124:27017/macaw";
-var mongourl  = "mongodb://macaws:macaws@macaws:27017/macaw";
+//var mongourl  = "mongodb://macaws:macaws@172.30.222.124:27017/macaws";
+var mongourl  = "mongodb://macaws:macaws@macaws:27017/macaws";
 //var mongourl  = "mongodb://localhost:27017";
 
 app.use('/', express.static( __dirname + '/public' ));
