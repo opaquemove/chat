@@ -10,13 +10,13 @@ function cMacaw2() {
 }
 
 cMacaw2.prototype = {
-  init: function( url, dbname, cname , chat_type, socketio ) {
-    this.url       = url;
-    this.dbname    = dbname;
-    this.cname     = cname;
-    this.chat_type = chat_type;
-    this.socketio  = socketio;
-    this.mongodb = require('mongodb');
+  select: function( url, dbname, cname , chat_type, socketio ) {
+    this.url         = url;
+    this.dbname      = dbname;
+    this.cname       = cname;
+    this.chat_type   = chat_type;
+    this.socketio    = socketio;
+    this.mongodb     = require('mongodb');
     this.MongoClient = this.mongodb.MongoClient;
 
     this.MongoClient.connect( this.url, {useNewUrlParser:true}, (function( err, client ) {
@@ -47,7 +47,7 @@ cMacaw2.prototype = {
       col.insertOne( this.payload, ( function( err, result ) {
         console.log( 'result:' + result );
         console.log( 'err:' + err );
-        if ( this.socketio != null ) this.socketio.emit( this.chat_type, docs );
+   //     if ( this.socketio != null ) this.socketio.emit( this.chat_type, docs );
       } ).bind( this ) );
       client.close();
     }).bind( this ) );
@@ -55,8 +55,8 @@ cMacaw2.prototype = {
 };
 
 // var macaw2 = new cMacaw2();
-// macaw2.init( 'mongodb://127.0.0.1:27017', 'macaws', 'macaws', 'hoge', null );
-// macaw2.insert( 'mongodb://127.0.0.1:27017', 'macaws', 'macaws', 'hoge', null, {"mac_name":"scarlet"} );
+// macaw2.select( 'mongodb://127.0.0.1:27017', 'macaws', 'macaws', 'hoge', null );
+// macaw2.select( 'mongodb://127.0.0.1:27017', 'macaws', 'macaws', 'hoge', null, {"mac_name":"scarlet"} );
 
 module.exports = cMacaw2;
 

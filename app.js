@@ -22,15 +22,17 @@ io.on('connection', ( socket ) => {
       case 'sql':
         console.log( msg );
         break;
-      case 'insert':
-        console.log( typeof( macaw2 ) );
-        macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
+      case 'macaw':
+        macaw2.select(mongourl,'macaws','macaws', msg, socket);
         break;
       case 'list':
-        console.log( typeof( macaw2 ) );
-        macaw2.init(mongourl,'macaws','macaws', 'list',socket);
+        macaw2.select(mongourl,'macaws','macaws', 'list',socket);
+        break;
+      case 'insert':
+        macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
         break;
       default:
+        macaw2.insert(mongourl,'macaws','chats', 'chat',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
         socket.broadcast.emit('chat', msg );
         socket.emit( 'chat', msg );
         break;
