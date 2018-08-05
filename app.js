@@ -37,6 +37,14 @@ io.on('connection', ( socket ) => {
       case 'macaw':
         macaw2.select(mongourl,'macaws','macaws', msg, socket);
         break;
+      case 'pause':
+        socket.broadcast.emit( 'pause', msg );
+        socket.emit( 'pause', msg );
+        break;
+      case 'stop':
+        socket.broadcast.emit( 'stop', msg );
+        socket.emit( 'stop', msg );
+        break;
       case 'list':
         macaw2.select(mongourl,'macaws','macaws', 'list',socket);
         break;
