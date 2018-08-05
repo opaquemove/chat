@@ -32,7 +32,8 @@ io.on('connection', ( socket ) => {
         macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
         break;
       default:
-        macaw2.insert(mongourl,'macaws','chats', 'chat',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
+        macaw2.insert(mongourl,'macaws','chats', 'chat',socket,
+         {"message":msg} );
         socket.broadcast.emit('chat', msg );
         socket.emit( 'chat', msg );
         break;
