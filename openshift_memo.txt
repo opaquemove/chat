@@ -1,0 +1,95 @@
+ローカルで新規でリポジトリ作成
+git init
+GitHubにあるリポジトリをローカルに複製
+git clone URL
+
+gitで管理したくないファイルの管理
+vi .gitignore
+
+configファイルの確認
+vi .git/config
+
+gitの設定ファイルの確認
+git config --list
+
+gitの設定項目の削除
+git config --unset 削除したい設定
+
+インデックスにファイルを登録
+git add ファイル名|*
+
+コミット
+git commit -m メッセージ
+git commit -a -m メッセージ
+
+リモートリポジトリを登録
+git remote add origin URL
+
+プッシュ（ローカルリポジトリをリモートリポジトリに送信
+git push origin master
+
+pushするときにSSLエラーが出たらこれ
+git config --global http.sslVerify false
+
+
+openshift command
+参考にしたサイト
+https://nekop.hatenablog.com/entry/2017/12/01/120838
+https://github.com/nekop/openshift-sandbox/blob/master/docs/developer-handson.md
+
+ダウンロード
+openshiftにアクセスし、右上のヘルプからCommand Line Toolsからダウンロード
+ダウンロードしたファイルをtar -zxvfで＄PATHが通っているフォルダに解凍
+
+続けてCommand Line Toolsに記載されているログインコマンドをコピペして
+ターミナルから起動する
+
+誰でログインしている？
+oc whoami
+
+クライアントの構成
+oc config view
+
+ステータス
+oc status
+
+ログイン
+oc login
+oc login -u <id>
+
+ログアウト
+oc logout
+
+openshift上にプロジェクトを作成する
+oc new-project <プロジェクト名>
+
+プロジェクトの切り替え
+oc project <プロジェクト名>
+
+カレントのプロジェクトの確認
+oc project
+
+アプリケーションの作成する
+oc new-app <githubで作成したリポジトリのURL>
+oc new-app https://github.com/opaquemove/opaquemove
+
+
+状況確認するコマンド
+oc status
+oc get all
+oc logs
+oc get event
+
+外部からのアクセスのためのルータを公開(expose)する
+oc expose svc opaquemove
+oc expose svc/chat
+
+公開したURLを確認する
+oc get route
+
+ルートの削除
+oc delete route opaquemove
+
+curlでアクセスできることを確認
+curl <url>
+
