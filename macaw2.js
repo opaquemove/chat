@@ -25,7 +25,10 @@ cMacaw2.prototype = {
       var col = db.collection( this.cname );
       col.find({}).toArray( ( function( err, docs ) {
         console.log( docs );
-        if ( this.socketio != null ) this.socketio.emit( this.chat_type, docs );
+        if ( this.socketio != null ) {
+          this.socketio.broadcast.emit( this.chat_type, docs );
+          this.socketio.emit( this.chat_type, docs );
+        }
       } ).bind( this ) );
       client.close();
     }).bind( this ) );
