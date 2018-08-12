@@ -5,51 +5,72 @@
     <title>chat macaws...</title>
     <style>
       body {
-        width:100%;height:100%;
+        width:100%;height:100%;padding: 0px;
+        margin:0px;font-family: arial, sans-serif;
+        background-color: #EDEDED;
       }
-      .container {
-        z-index: 117;
-        width:100%;height:100%;text-align:center;
-        display:table;
+      #header {
+        width:100%;
+        height:40px;
+        line-height: 40px;
+        padding-left:6px;
+        font-size: 16px;
+        color:#FFFFFF;
+        background-color:black;
+        vertical-align: middle;
       }
-      .mainblock {
-        z-index: 117;
-        position:relative;
-        width:200px;
-        height:500px;
-        vertical-align:middle;display:table-cell;
+      #subheader{
+        width: 100%;
+        height:36px;
+        font-size: 14px;
+        color:white;
+        background-color:#333333;
+        vertical-align: middle;        
       }
-      .button1 {
-        position:relative;
-        background-color:#FFFFFF;
+
+      #OPT {
         width:80px;
+        height:20px;
+        padding:0px;
+        line-height:6px;
         font-size:9px;
-        pading:2px;
-        border:1px solid #EDEDED;
       }
+
       #SLIDEPLUS {
-        z-index: 118;
-        position: absolute;
-        top:     20px;
-        left:    10px;
-        width:   24px;
-        height:  24px;
+        float: left;
+        width:   20px;
+        height:  20px;
         padding:  2px;
+        margin-left: 1px;
         text-align: center;
         color:      #AAAAAA;
         border:  1px solid #EDEDED;
       }
       #SLIDEMINUS {
-        z-index: 118;
-        position: absolute;
-        top:     20px;
-        left:    41px;
-        width:   24px;
-        height:  24px;
+        float: left;
+        width:   20px;
+        height:  20px;
         padding:  2px;
+        margin-left: 1px;
         text-align: center;
         color:      #AAAAAA;
         border:  1px solid #EDEDED;
+      }
+      #SLIDEANIMATION_AREA{
+        float: left;
+        position: relative;
+        width:700px;
+        height:20px;
+        margin-top:4px;
+        margin-left: 2px;
+      }
+
+      #MESSAGE_AREA {
+        width:100%;
+        height:190px;
+        font-size:10px;
+        border:1px solid #CCCCCC;
+        overflow:scroll;
       }
 
     </style>
@@ -60,22 +81,32 @@
     <script src="index.js" ></script>
   </head>
   <body>
-    <div id='SLIDEPLUS'  >＋</div>
-    <div id='SLIDEMINUS' >ー</div>
-    <div class="container" >
-      <div class="mainblock"  >
-        <h1 style="color:#777777;" >Chat  macaws...</h1>
+    <div id="header">
+      <div style="float:left;" >
+         opaquemove | chat macaws...
+      </div>
+      <div style="float:right;" >
+        <div id="Opt" style="font-size:9px;" >Option...</div>
+      </div>
+     
+    </div>
+    <div id="subheader" >
+      <div style="padding:6px 6px;float: left;line-height: 22px;">chat : </div>
+      <div style="padding:6px 4px;float: left;line-height: 22px;" >
         <form id='form' autocomplete="off" >
-          <input id='chat' style="width:170px;" />
+          <input id='chat' style='width: 200px;color:#EDEDED;background-color: #333333;border:1px solid black;' />
           <button>send</button>
         </form>
-        <div style="text-align:left;" >
-          <div id="Opt" class="button1" style="" >Option...</div>
-          <div style="width:100%;height:190px;font-size:10px;overflow:scroll;" >
-            <ul id="messages"></ul>
-          </div>
-        </div>
       </div>
+      <div style="padding:6px 4px;float: left;">
+        <div id='SLIDEPLUS'  >＋</div>
+        <div id='SLIDEMINUS' >ー</div>
+        <div id='SLIDEANIMATION_AREA'>slides...</div>
+      </div>
+    </div>
+
+    <div id="MESSAGE_AREA" >
+      <ul id="messages"></ul>
     </div>
   </body>
 </html>

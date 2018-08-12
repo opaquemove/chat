@@ -7,7 +7,7 @@ Switch.prototype = {
   play: function() {
     this.o = document.getElementById( this.id );
     this.o.addEventListener( 'mouseover', ( function( e ) {
-      e.target.style.backgroundColor = '#CCCCCC';
+      e.target.style.backgroundColor = '#BBBBBB';
       e.target.style.cursor          = 'pointer';
     }).bind( this ), false );
     this.o.addEventListener( 'mouseout', ( function( e ) {

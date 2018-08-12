@@ -1,4 +1,5 @@
   window.onload = init;
+  window.onresize = resize;
   var slides = [];
 
   function init() {
@@ -11,6 +12,8 @@
       chat.value = '';
     });
 
+    fitMessageArea();
+    chat.focus();
 
     new Switch( 'Opt', null ).play();
     new Switch( 'SLIDEPLUS', slidePlus ).play();
@@ -22,7 +25,17 @@
     for ( var i=0; i<slides.length; i++ ) {
       setTimeout( "slides[" + i + "].play()", 1 + ( 1500 * i ) );
     }
+  }
 
+  function resize(){
+    fitMessageArea();
+  }
+
+  function fitMessageArea() {
+    var w = document.documentElement.clientWidth;
+    var h = document.documentElement.clientHeight;
+    document.getElementById('MESSAGE_AREA').style.width = ( w - 2) + 'px';
+    document.getElementById('MESSAGE_AREA').style.height = ( h - 80 ) + 'px';
   }
 
   var socket = io();

@@ -18,12 +18,13 @@ playSlide.prototype = {
     o.style.width    = '80px';
     o.style.fontSize = '10px';
     o.style.padding  = '2px';
-    o.style.border   = '1px solid white';
+    o.style.border   = '1px solid #DDDDDD';
     o.style.backgroundColor = this.backgroundColor;
     o.style.visibility = 'hidden';
     o.innerText      = this.title;
     o.draggable      = 'true';
-    this.oSlide = document.body.appendChild( o );
+//    this.oSlide = document.body.appendChild( o );
+    this.oSlide  = document.getElementById('SLIDEANIMATION_AREA').appendChild(o);
     this.orgLeft = parseInt( this.oSlide.style.left );
 
     this.oSlide.addEventListener( 'dragstart', function(e) {
@@ -46,7 +47,7 @@ playSlide.prototype = {
     if ( this.oTimer != null ) {
       clearTimeout( this.oTimer );
       this.oTimer = null;
-      document.body.removeChild( this.oSlide );
+      document.getElementById('SLIDEANIMATION_AREA').removeChild( this.oSlide );
     }
   }
 
