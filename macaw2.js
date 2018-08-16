@@ -54,6 +54,45 @@ cMacaw2.prototype = {
       } ).bind( this ) );
       client.close();
     }).bind( this ) );
+  },
+  history: function( url, chat_type, socketio ) {
+    this.url         = url;
+    this.dbname      = 'macaws';
+    this.cname       = 'chats';
+    this.chat_type   = chat_type;
+    this.socketio    = socketio;
+    this.mongodb     = require('mongodb');
+    this.MongoClient = this.mongodb.MongoClient;
+
+    this.MongoClient.connect( this.url, {useNewUrlParser:true}, (function( err, client ) {
+      console.log( 'connected successfully to server.' );
+      const db = client.db( this.dbname );
+      var col = db.collection( this.cname );
+      col.find({}).toArray( ( function( err, docs ) {
+        console.log( docs );
+        if ( this.socketio != null ) {
+          this.socketio.broadcast.emit( this.chat_type, docs );
+          this.socketio.emit( this.chat_type, docs );
+        }
+      } ).bind( this ) );
+      client.close();
+    }).bind( this ) );    
+  },
+  purge: function( url, chat_type, socketio ) {
+    this.url         = url;
+    this.dbname      = 'macaws';
+    this.cname       = 'chats';
+    this.chat_type   = chat_type;
+    this.socketio    = socketio;
+    this.mongodb     = require('mongodb');
+    this.MongoClient = this.mongodb.MongoClient;
+
+    this.MongoClient.connect( this.url, {useNewUrlParser:true}, (function( err, client ) {
+      console.log( 'connected successfully to server.' );
+      const db = client.db( this.dbname );
+
+      client.close();
+    }).bind( this ) );  
   }
 };
 

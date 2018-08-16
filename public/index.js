@@ -45,6 +45,15 @@
     messages.appendChild( li );
   });
 
+  socket.on( 'history', function( msg ) {
+    var mac = eval( msg );
+    for ( var i=0; i<mac.length; i++ ) {
+      var li =  document.createElement( 'li' );
+      li.textContent = mac[i].message;
+      messages.appendChild( li );
+    }
+  });
+
   socket.on( 'list', function( msg ) {
     var mac = eval( msg );
     for ( var i=0; i<mac.length; i++ ) {
