@@ -63,6 +63,7 @@
     }
   } );
 
+/*
   socket.on( 'list2', function( msg ) {
     var mac = eval( msg );
     for ( var i=0; i<mac.length; i++ ) {
@@ -71,6 +72,7 @@
       messages.appendChild( li );
     }
   } );
+*/
 
   socket.on( 'macaw', function( msg ) {
     var mac = eval( msg );

@@ -52,10 +52,10 @@ io.on('connection', ( socket ) => {
 //        macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
 //        break;
       case 'history':
-        macaw2.history(mongourl,'macaws', msg, socket);
+        macaw2.history(mongourl, msg, socket);
         break;
       case 'purge':
-        macaw2.purge( mongourl, 'macaws', msg, socket );
+        macaw2.purge( mongourl, msg, socket );
         break;
       default:
         macaw2.insert(mongourl,'macaws','chats', 'chat',socket,
