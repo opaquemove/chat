@@ -11,8 +11,8 @@ var macaw2  = new Macaw2();
 var ipaddress       = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0";
 var port            = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var mongo_ipaddress = process.env.MACAWSDB_SERVICE_HOST || "127.0.0.1";
-var mongo_port      = process.env.MACAWSDB_SERVICE_PORT || 27017;
+var mongo_ipaddress = process.env.MACAWS_SERVICE_HOST || "127.0.0.1";
+var mongo_port      = process.env.MACAWS_SERVICE_PORT || 27017;
 
 var mongourl  = null;
 
