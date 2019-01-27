@@ -3,10 +3,14 @@ var express = require('express');
 var app     = express();
 var server  = require('http').Server(app);
 var io      = require('socket.io')(server);
+var fs      = require('fs');
 //var Macaw   = require('./macaw.js');
 //var macaw   = Macaw();
-var Macaw2  = require('./macaw2.js');
-var macaw2  = new Macaw2();
+//var Macaw2  = require('./macaw2.js');
+//var macaw2  = new Macaw2();
+
+var Mj      = require('./macaw_json.js');
+var mj      = new Mj();
 
 var ipaddress       = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0";
 var port            = process.env.OPENSHIFT_NODEJS_PORT || 8080;
@@ -35,7 +39,8 @@ io.on('connection', ( socket ) => {
         console.log( msg );
         break;
       case 'macaw':
-        macaw2.select(mongourl,'macaws','macaws', msg, socket);
+        //macaw2.select(mongourl,'macaws','macaws', msg, socket);
+        mj.select( './macaw.json', fs, msg, socket );
         break;
       case 'pause':
         socket.broadcast.emit( 'pause', msg );
@@ -46,20 +51,24 @@ io.on('connection', ( socket ) => {
         socket.emit( 'stop', msg );
         break;
       case 'list':
-        macaw2.select(mongourl,'macaws','macaws', 'list',socket);
+        //macaw2.select(mongourl,'macaws','macaws', 'list',socket);
+        mj.select( './macaw.json', fs, msg, socket );
         break;
 //      case 'insert':
 //        macaw2.insert(mongourl,'macaws','macaws', 'insert',socket, {"mac_name":"Catalina","action":"maya","url":"images/catalina.jpg"} );
 //        break;
       case 'history':
-        macaw2.history(mongourl, msg, socket);
+        //macaw2.history(mongourl, msg, socket);
+        mj.history( msg, socket );
         break;
       case 'purge':
-        macaw2.purge( mongourl, msg, socket );
+        //macaw2.purge( mongourl, msg, socket );
+        mj.purge( msg, socket );
         break;
       default:
-        macaw2.insert(mongourl,'macaws','chats', 'chat',socket,
-         {"message":msg} );
+        //macaw2.insert(mongourl,'macaws','chats', 'chat',socket,
+        // {"message":msg} );
+        mj.insert( msg, socket );
         socket.broadcast.emit('chat', msg );
         socket.emit( 'chat', msg );
         break;
@@ -80,7 +89,7 @@ server.on( 'listening', () => {
   console.log( 'listening on ' + port );
   console.log( '__dirname:' + __dirname );
   console.log( 'server:'  + ipaddress + ':' + port );
-  console.log( 'mongodb:' + mongo_ipaddress + ':' + mongo_port );
+//  console.log( 'mongodb:' + mongo_ipaddress + ':' + mongo_port );
 });
 
 server.listen( port, ipaddress );
