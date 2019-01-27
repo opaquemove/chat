@@ -4,8 +4,8 @@ WebSocketベースのシンプルなチャットアプリケーション
 ### コマンド
 特別な意味を持つコマンド
 
-*macaw  
+* macaw  
 スライドアニメーションを開始します.
-*pause
-*stop
+* pause
+* stop
 
