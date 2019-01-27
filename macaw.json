@@ -1,0 +1,7 @@
+[
+ { "mac_name":"macaws","action":"maya", "url":"images/macaws.jpg" },
+ { "mac_name":"CamelotMacaw","action":"maya", "url":"images/CamelotMacaw.jpg" },
+ { "mac_name":"scarlet","action":"maya", "url":"images/scarletmacaw.jpg" },
+ { "mac_name":"twomacaws","action":"maya", "url":"images/twomacaws.jpg" }
+]
+
